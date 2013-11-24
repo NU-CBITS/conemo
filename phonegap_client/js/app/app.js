@@ -11,8 +11,8 @@ app.config.assessments = {};
 app.config.assessments.exist = false;
 app.config.lessonToLoad = function(){
 
-    if (parseQueryString("lesson_id")){
-        return parseInt(parseQueryString("lesson_id"))
+    if (localStorage["page_to_load"] != undefined){
+        return parseInt(localStorage["page_to_load"])
     }
 
     else {
@@ -37,7 +37,7 @@ app.start = function (appContent) {
     app.status.currentChapterId = app.config.lessonToLoad();
 
     if (!app.status.currentChapterId) {
-        app.actions.loadAssessment()
+        app.actions.loadHome()
     };
 
 
@@ -219,7 +219,7 @@ app.actions.changePage = function (index_of_page) {
 
     	$("button.pageNext").off("click");
     	$("button.pageBack").off("click");
-    	$("button.pageNext").on("click",function(ev){app.actions.loadAssessment();});
+    	$("button.pageNext").on("click",function(ev){app.actions.loadHome();});
     	$("button.pageBack").on("click",function(ev){app.actions.changePage(app.status.currentPageIndex-1)});
 
     } 
@@ -252,7 +252,7 @@ app.actions.goToChapter = function(chapterId,appContents){
 }
 
 
-app.actions.loadAssessment = function () {
+app.actions.loadHome = function () {
   window.location.href = "reviewer.html";
 };
 

@@ -50,7 +50,7 @@
 
         var buildHome = function(){
 
-            
+
             var lessons =_.where(appContent.nav_elements, {element_type:"lesson"});
             var content_title = "<img src='images/logo-wide.png' style='width:100%;'><br/>";
             var content = "";
@@ -68,19 +68,20 @@
             $("body").html(content);
             $("button").on("click", function(ev) {
                 console.log(ev.currentTarget.dataset.value);
+                localStorage["page_to_load"] = ev.currentTarget.dataset.value;
+                window.location.href = "index.html";
 
-                window.location.href = "index.html?lesson_id=" + ev.currentTarget.dataset.value;
             });
 
 
 
-            
+
         }
 
 
         $(function() {
 
-
+            buildHome();
 
         });
 
