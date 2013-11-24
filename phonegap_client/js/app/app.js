@@ -143,10 +143,10 @@ app.build.chapterProgressBar = function (position,total){
     { 
    
     if (i <= position){
-    dots += '<i class="fa fa-circle"></i> '
+    dots += '<i class="fa fa-circle"></i>'
     }
     else {
-    dots += '<i class="fa fa-circle-o"></i> '   
+    dots += '<i class="fa fa-circle-o"></i>'   
     }
 
 

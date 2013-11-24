@@ -1,4 +1,4 @@
-.bottom {bottom:15px; position: absolute;}
+.bottom {bottom:15px; position: absolute; background-color: gray;}
 .pageNext, .pageBack, .chapterProgress,.mainContainer,.currentSlideCount {display:none;}
 
 body {margin-top:1em;}

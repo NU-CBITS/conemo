@@ -48,11 +48,11 @@
         }
 
 
-        $(function() {
+        var buildHome = function(){
 
-
+            
             var lessons =_.where(appContent.nav_elements, {element_type:"lesson"});
-            var content_title = "<h2>CONEMO Usability</h2>";
+            var content_title = "<img src='images/logo-wide.png' style='width:100%;'><br/>";
             var content = "";
 
             _.each(lessons, function(element){
@@ -71,6 +71,15 @@
 
                 window.location.href = "index.html?lesson_id=" + ev.currentTarget.dataset.value;
             });
+
+
+
+            
+        }
+
+
+        $(function() {
+
 
 
         });
