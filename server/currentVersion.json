@@ -1,0 +1,8 @@
+{ 
+	"appName":"CONEMO",
+	"currentVersion": "0.0.2",
+	"updateInfo":{
+		"size":"32.5MB",
+		"manifest":["v1.mp4","v2.mp4"]
+	}
+}

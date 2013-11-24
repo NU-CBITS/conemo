@@ -40,10 +40,12 @@ app.start = function (appContent) {
         app.actions.loadAssessment()
     };
 
-    $(".pageBack").hide();
 
     app.build.navChapterBar(app.arrayOfChapterIds(app.content));
     app.build.chapter(app.status.currentChapterId, app.content);
+
+        $(".pageBack").hide();
+
 
 }
 
@@ -113,8 +115,8 @@ app.build.chapter = function (currentChapterId, appContents) {
     $(".currentSlideCount").html("1 of " + app.status.numPagesInCurrentChapter);
 
 
-    $(".pageNext").html('NEXT <i class= "icon-chevron-right"></i>');
-    $(".pageBack").html('<i class="icon-chevron-left"></i> BACK');
+    $(".pageNext").html('NEXT <i class= "fa fa-chevron-right"></i>');
+    $(".pageBack").html('<i class="fa fa-chevron-left"></i> BACK');
 
 
     $("button.pageNext").on("click",function(ev){app.actions.changePage(app.status.currentPageIndex+1)});
@@ -134,14 +136,31 @@ app.build.chapter = function (currentChapterId, appContents) {
 };
 
 app.build.chapterProgressBar = function (position,total){
-	    $(".chapterProgressBar").width((position/total)*100 + "%");
+
+    var dots = "";
+
+    for (var i=1;i<total+1;i++)
+    { 
+   
+    if (i <= position){
+    dots += '<i class="fa fa-circle"></i> '
+    }
+    else {
+    dots += '<i class="fa fa-circle-o"></i> '   
+    }
+
+
+    }
+
+    $(".position-indicator").html(dots);
+	 
 }
 
 
 
 app.templates = {};
-app.templates.fullPage = '<div class="span12 mainContent"></div>';
-app.templates.threePanel = '<div class="span7 mainContent"></div><div class="span5"><div class="row-fluid"><div class="span12 topRight"></div><div class="row-fluid"><div class="span12 bottomRight"></div></div></div></div>';
+app.templates.fullPage = '<div class="col-md-12 mainContent"></div>';
+app.templates.threePanel = '<div class="col-md-7 mainContent"></div><div class="col-md-5"><div class="row-fluid"><div class="col-md-12 topRight"></div><div class="row-fluid"><div class="col-md-12 bottomRight"></div></div></div></div>';
 
 app.actions = {};
 
@@ -196,7 +215,7 @@ app.actions.changePage = function (index_of_page) {
     } 
 
     if (index_of_page == app.status.numPagesInCurrentChapter - 1) {
-    	$(".pageNext").html('FINISH <i class= "icon-stop"></i>');
+    	$(".pageNext").html('FINISH <i class= "fa fa-stop"></i>');
 
     	$("button.pageNext").off("click");
     	$("button.pageBack").off("click");
@@ -206,8 +225,8 @@ app.actions.changePage = function (index_of_page) {
     } 
     
     if (index_of_page != 0 && index_of_page != app.status.numPagesInCurrentChapter - 1){
-    	$(".pageNext").html('NEXT <i class= "icon-chevron-right"></i>');
-    	$(".pageBack").html('<i class="icon-chevron-left"></i> BACK');
+    	$(".pageNext").html('NEXT <i class= "fa fa-chevron-right"></i>');
+    	$(".pageBack").html('<i class="fa fa-chevron-left"></i> BACK');
     	$("button.pageNext").off("click");
     	$("button.pageBack").off("click");
     	$("button.pageNext").on("click",function(ev){app.actions.changePage(app.status.currentPageIndex+1)});

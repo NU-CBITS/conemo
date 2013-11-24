@@ -6,23 +6,17 @@
     <meta content="initial-scale=1.0, user-scalable=no" name="viewport">
 
     <title></title>
-    <link   href="js/vendor/bootstrap/css/bootstrap.min.css" 
-            media="screen" 
-            rel="stylesheet">
-     <link   href="lib/assets/stylesheets/application.css"       media="screen" 
-            rel="stylesheet">
+    <link href="vendor/assets/stylesheets/bootstrap/bootstrap.min.css" media="screen" rel="stylesheet">
+    <link href="vendor/assets/stylesheets/fontawesome/font-awesome.min.css" media="screen" rel="stylesheet">
+    <link href="lib/assets/stylesheets/application.css" media="screen" rel="stylesheet">
 
 
 
-    <script src="js/vendor/jquery-1.9.1.js"></script>
-    <script src="js/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="js/vendor/underscore-min.js"></script>
-
-
-    <script src="js/helper/parse-query-string.js"></script>
-
-    <script src="js/helper/downloadRemoteFiles.js"></script>
-
+    <script src="vendor/assets/javascripts/jquery/jquery-1.9.1.js"></script>
+    <script src="vendor/assets/javascripts/bootstrap/bootstrap.min.js"></script>
+    <script src="vendor/assets/javascripts/lodash/lodash.underscore.min.js"></script>
+    <script src="lib/assets/javascripts/parse-query-string.js"></script>
+ 
     <!--app JS-->
     <script src="js/app/content.js"></script>
     <script src="js/app/app.js"></script>
@@ -49,41 +43,30 @@
 </head>
 
 <body>
-   <!-- <div class="row-fluid">
-        <div class="span12">
-            <div class="navbar">
-                <div class="navbar-inner">
-                    <div class="container">
-                        <ul class="nav" id="main_nav"></ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>-->
+
     <div class="row-fluid mainContainer">
-        <div class="span1">
+        <div class="col-md-1 col-xs-1 col-sm-1">
         </div>
-        <div class="span10 mainContent">
+        <div class="col-md-10 col-xs-10 col-sm-10 mainContent">
         </div>
-        <div class="span1">
+        <div class="col-md-1 col-xs-1 col-sm-10">
         </div>
       
     </div>
     
     <div id="bottom-nav" class="row-fluid">
-        <div class="span4">
-            <button class="pageBack btn"></button>
+        <div class="col-md-2 col-xs-4 col-sm-4" id="bottom-left">
+            <button class="pageBack btn btn-info"></button>
         </div>
 
-        <div class="span4">
+        <div class="col-md-8 col-xs-4 col-sm-4" id="bottom-middle">
+            <div class="position-indicator"></div>
             <div class="currentSlideCount"></div>
-            <div class="progress progress-striped chapterProgress">
-                <div class="bar chapterProgressBar" ></div>
-            </div>
+
         </div>
 
-        <div class="span4">
-            <button class="pageNext btn"></button>
+        <div class="col-md-2 col-xs-4 col-sm-4" id="bottom-right">
+            <button class="pageNext btn btn-primary"></button>
         </div>
     </div>
 </body>
