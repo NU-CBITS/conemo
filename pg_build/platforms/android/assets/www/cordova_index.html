@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="initial-scale=1.0, user-scalable=no" name="viewport">
+
+    <title></title>
+    <link href="vendor/assets/stylesheets/bootstrap/bootstrap.min.css" media="screen" rel="stylesheet">
+    <link href="vendor/assets/stylesheets/fontawesome/font-awesome.min.css" media="screen" rel="stylesheet">
+    <link href="lib/assets/stylesheets/application.css" media="screen" rel="stylesheet">
+
+    <!--<script src="phonegap.js"></script>-->
+    <script src="vendor/assets/javascripts/jquery/jquery-1.9.1.js"></script>
+    <script src="vendor/assets/javascripts/bootstrap/bootstrap.min.js"></script>
+    <script src="vendor/assets/javascripts/lodash/lodash.underscore.min.js"></script>
+
+
+    <script src="lib/assets/javascripts/cordovaAppOnLaunch.js"></script>
+ 
+    <!--app JS-->
+    <script src="js/app/content.js"></script>
+    <script src="js/app/app.js"></script>
+    <!-- User-generated css -->
+
+    <style>
+    
+
+    </style>
+
+</head>
+
+<!--see appOnLaunch.js for why this is necessary-->
+<!--this page will NOT load unless it is part of Cordova build-->
+<body onload="onCordovaLoad();">
+
+    <div class="row-fluid mainContainer">
+        <div class="col-md-1 col-xs-1 col-sm-1">
+        </div>
+        <div class="col-md-10 col-xs-10 col-sm-10 mainContent">
+        </div>
+        <div class="col-md-1 col-xs-1 col-sm-10">
+        </div>
+      
+    </div>
+    
+    <div id="bottom-nav" class="row-fluid">
+        <div class="col-md-2 col-xs-4 col-sm-4" id="bottom-left">
+            <button class="pageBack btn btn-info"></button>
+        </div>
+
+        <div class="col-md-8 col-xs-4 col-sm-4" id="bottom-middle">
+            <div class="position-indicator"></div>
+            <div class="currentSlideCount"></div>
+
+        </div>
+
+        <div class="col-md-2 col-xs-4 col-sm-4" id="bottom-right">
+            <button class="pageNext btn btn-primary"></button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+
+
+Control Flow
+------------
+
+
+The Dynamic nature of this application is achieved through the content.js and app.js files.
+
+Control flow begins with the definition of the app object, and the call to app.start() on ln 92 of index.html

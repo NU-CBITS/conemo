@@ -6,6 +6,7 @@
                                  "dummy.html", {create: true, exclusive: false}, 
                                  function gotFileEntry(fileEntry){
                                  var sPath = fileEntry.fullPath.replace("dummy.html","");
+                                 localStorage["local_file_system_path"] = sPath;
                                  var fileTransfer = new FileTransfer();
                                  fileEntry.remove();
  
@@ -14,7 +15,6 @@
                                            sPath + file_name,
                                            function(theFile) {
                                            console.log("download complete: " + theFile.toURI());
-                                           addManifest(theFile.toURI());
                                            showLink(theFile.toURI());
                                            },
                                            function(error) {

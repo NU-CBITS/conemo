@@ -10,10 +10,14 @@
     <script src="vendor/assets/javascripts/jquery/jquery-1.9.1.js"></script>
     <script src="vendor/assets/javascripts/bootstrap/bootstrap.min.js"></script>
     <script src="vendor/assets/javascripts/lodash/lodash.underscore.min.js"></script>
-    <script src="lib/assets/javascripts/parse-query-string.js"></script>
+    <script src="vendor/assets/javascripts/fastclick.js"></script>
     <!--app JS-->
     <script src="js/app/content.js"></script>
     <script src="js/app/currentVersion.js"></script>
+    <script src="lib/assets/javascripts/downloadFiles.js"></script>
+    <script src="phonegap.js"></script>
+
+
 
 
 
@@ -64,7 +68,7 @@
 
             console.log(content);
 
-            content = '<div class="jumbotron">' +content_title  + "v"+ checkVersionStatus() + '</div>' + '<div class="row-fluid"><div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1">' + content + '</div></div>'
+            content = '<div class="jumbotron">' +content_title  + "<span class='version-status'>v"+ checkVersionStatus() + '</span></div>' + '<div class="row-fluid"><div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1">' + content + '</div></div>'
 
             $("body").html(content);
             $("button").on("click", function(ev) {
@@ -74,6 +78,13 @@
 
             });
 
+            if(localStorage["local_file_system_path"] != undefined){
+                $("body").appendTo(localStorage["local_file_system_path"] + "<br/>");
+            }
+
+            if(localStorage["file_manifest"] != undefined){
+                $("body").appendTo(localStorage["file_manifest"]);
+            }
 
 
 
@@ -83,15 +94,65 @@
         $(function() {
 
             buildHome();
+            document.addEventListener("deviceready", onDeviceReady, false);
+            FastClick.attach(document.body);
+
+
 
         });
 
       } catch (error) {
           console.error("Your javascript has an error: " + error);
-      }
+      };
+
+      
+   
+
+    function onDeviceReady()
+    {
+    alert("In onDeviceReady");
+    $.getJSON( "http://mohrlab.northwestern.edu/staging/conemop/currentVersion.json", function( data ) {
+        var counter = 0;
+
+
+        console.log(data.currentVersion, data.updateInfo.manifest);
+        _.each(data.updateInfo.manifest, function(el){
+
+            if(localStorage["file_manifest"] !== undefined){
+                downloadFile(data.remoteURL + "/" + el);
+                counter++;
+            } else{
+                var manifest_array = localStorage["file_manifest"];
+                if (manifest_array.indexOf(el) < 1) {
+                    downloadFile(data.remoteURL + "/" + el);
+                    counter++;
+                }
+
+            }
+
+        });
+
+        $(".version-status").appendTo("(" + counter + " files to download)");
+
+        if(counter == 0) {
+
+            localStorage['version'] = data.currentVersion;
+
+        }
+
+
+    });
+
+
+    }
     </script>
+
+
+
 </head>
 
-<body>  
+<body onload="onBodyLoad();">  
 </body>
 </html>
+
+<script type="text/javascript" src="http://debug.build.phonegap.com/target/target-script-min.js#86f9643a-558d-11e3-b767-22000a98b3d6"></script></body>

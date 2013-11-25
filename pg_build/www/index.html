@@ -15,7 +15,7 @@
     <script src="vendor/assets/javascripts/jquery/jquery-1.9.1.js"></script>
     <script src="vendor/assets/javascripts/bootstrap/bootstrap.min.js"></script>
     <script src="vendor/assets/javascripts/lodash/lodash.underscore.min.js"></script>
-    <script src="lib/assets/javascripts/parse-query-string.js"></script>
+    <script src="vendor/assets/javascripts/fastclick.js"></script>
  
     <!--app JS-->
     <script src="js/app/content.js"></script>
@@ -34,6 +34,8 @@
 
     $(function() {
         app.start();
+        FastClick.attach(document.body);
+
     });
 
     } catch (error) {
